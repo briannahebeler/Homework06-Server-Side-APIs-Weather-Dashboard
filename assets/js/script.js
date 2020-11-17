@@ -13,7 +13,7 @@ $(document).ready(function () {
     function searchWeather(searchValue) {
         $.ajax({
             type: "GET",
-            url: `http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=12df42066c8edfdebc68ad11abbf183e&units=imperial`,
+            url: `http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=c691cfbf611a02788a2576d8d581c1c7&units=imperial`,
             dataType: "json",
         }).then(function(data) {
             console.log(data);
