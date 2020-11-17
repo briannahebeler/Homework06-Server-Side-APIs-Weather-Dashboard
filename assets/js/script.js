@@ -26,11 +26,12 @@ $(document).ready(function () {
             var title = $("<h3>").addClass("card-title").text(data.name + " (" + moment().format('L') + ")");
             var card = $("<div>").addClass("card");
             var temp = $("<p>").addClass("card-text").text("Temp: " + data.main.temp);
-            var wind = $("<p>").addClass("card-text").text("Wind: " + data.wind.speed);
+            var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed);
             var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}`);
+            var uv = $("<p>").addClass("card-text").text(`UV Index: `);
             var cardBody = $("<div>").addClass("card-body");
 
-            cardBody.append(title, temp, wind, humid);
+            cardBody.append(title, temp, humid, wind, uv);
             card.append(cardBody);
             $("#today").append(card);
 
