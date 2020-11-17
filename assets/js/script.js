@@ -6,6 +6,8 @@ $(document).ready(function () {
         $("search-value").val("");
 
         searchWeather(searchValue);
+        searchUV();
+        // search5Day();
     })
 
 
@@ -23,21 +25,30 @@ $(document).ready(function () {
             $("#today").empty();
 
             //creating a card for appending weather data
-            var title = $("<h3>").addClass("card-title").text(data.name + " (" + moment().format('L') + ")");
+            var title = $("<h3>").addClass("card-title").text(data.name + " (" + moment().format('L') + ")" + " " + data.weather[0].icon);
             var card = $("<div>").addClass("card");
             var temp = $("<p>").addClass("card-text").text("Temp: " + data.main.temp);
             var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed);
             var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}`);
-            var uv = $("<p>").addClass("card-text").text(`UV Index: `);
-            var cardBody = $("<div>").addClass("card-body");
+            var cardBody = $("<div>").addClass("card-body searchWeather");
 
-            cardBody.append(title, temp, humid, wind, uv);
+            cardBody.append(title, temp, humid, wind);
             card.append(cardBody);
             $("#today").append(card);
 
         });
+    }
+
+    function searchUV() {
+        cardBody = $(".searchWeather");
+        var uv = $("<p>").addClass("card-text").text(`UV Index: `);
+        cardBody.append(uv);
 
     }
+
+    // function search5Day() {
+
+    // }
 
     //function to get forecast- diff url
 
