@@ -23,7 +23,7 @@ $(document).ready(function () {
             $("#today").empty();
 
             //creating a card for appending weather data
-            var title = $("<h3>").addClass("card-title").text(data.name);
+            var title = $("<h3>").addClass("card-title").text(data.name + " (" + moment().format('L') + ")");
             var card = $("<div>").addClass("card");
             var temp = $("<p>").addClass("card-text").text("Temp: " + data.main.temp);
             var wind = $("<p>").addClass("card-text").text("Wind: " + data.wind.speed);
