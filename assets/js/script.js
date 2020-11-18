@@ -33,8 +33,9 @@ $(document).ready(function () {
             var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}`);
             var cardBody = $("<div>").addClass("card-body").attr("id", "searchWeather");
 
-            cardBody.append(title, icon, temp, humid, wind);
+            cardBody.append(title, temp, humid, wind);
             card.append(cardBody);
+            title.append(icon);
             $("#today").append(card);
 
             searchUV(data.coord.lat, data.coord.lon);
