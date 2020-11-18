@@ -2,8 +2,6 @@ $(document).ready(function () {
 
     $("#search-button").on("click", function () {
         var searchValue = $("#search-value").val();
-        // var lat =;
-        // var lon =;
 
         $("search-value").val("");
 
@@ -40,23 +38,25 @@ $(document).ready(function () {
             card.append(cardBody);
             $("#today").append(card);
 
+            searchUV(data.coord.lat, data.coord.lon);
+
+            // search5Day(searchValue);
+
+
+
         });
     }
 
-    function searchUV(lat, long) {
+    function searchUV(lat, lon) {
         $.ajax({
             type: "GET",
-            url: `http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid=c691cfbf611a02788a2576d8d581c1c7&units=imperial`,
+            url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=c691cfbf611a02788a2576d8d581c1c7`,
             dataType: "json",
         }).then(function(data) {
             console.log(data);
+            var uv = $("<p>").addClass("card-text").text(`UV Index: + ${data.value}`);
 
-            //creating a new p tag for the data appended to the cardbody class of the previous
-            console.log("i see in here")
-            var cardBody = $("#searchWeather");
-            var uv = $("<p>").addClass("card-text").text(`UV Index: `);
-
-            cardBody.append(uv);
+            $("#searchWeather").append(uv);
 
         });
     }
