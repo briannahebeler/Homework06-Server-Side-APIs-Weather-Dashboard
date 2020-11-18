@@ -1,0 +1,16 @@
+.uvFavorable {
+    background-color: green;
+    color:white;
+}
+
+.uvModerate {
+    background-color: yellow;
+    color:white;
+
+}
+
+.uvSevere {
+    background-color: red;
+    color:white;
+
+}

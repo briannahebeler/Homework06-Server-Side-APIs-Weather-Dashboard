@@ -18,7 +18,6 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=c691cfbf611a02788a2576d8d581c1c7&units=imperial`,
             dataType: "json",
         }).then(function(data) {
-            console.log(data);
             //create history link for the search (Look up .push())
             //this is used to set items to local storage- is done in function of first call
 
@@ -39,6 +38,7 @@ $(document).ready(function () {
             $("#today").append(card);
 
             searchUV(data.coord.lat, data.coord.lon);
+            // console.log(data.coord.lat + " " + data.coord.lon);
 
             // search5Day(searchValue);
 
@@ -50,11 +50,21 @@ $(document).ready(function () {
     function searchUV(lat, lon) {
         $.ajax({
             type: "GET",
-            url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=c691cfbf611a02788a2576d8d581c1c7`,
+            url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=436b282f4e8096812742aad81f633d29`,
             dataType: "json",
         }).then(function(data) {
-            console.log(data);
-            var uv = $("<p>").addClass("card-text").text(`UV Index: + ${data.value}`);
+            var uv = $("<p>").addClass("card-text").text(`UV Index: ${data.value}`);
+            
+            if (data.value < 3) {
+                uv.addClass("uvFavorable");
+                // console.log(uv);
+            }
+            else if (data.value <= 5) {
+                uv.addClass("uvModerate");
+            }
+            else {
+                uv.addClass("uvSevere");
+            }
 
             $("#searchWeather").append(uv);
 
@@ -62,6 +72,18 @@ $(document).ready(function () {
     }
 
     // function search5Day() {
+    //     $.ajax({
+    //         type: "GET",
+    //         url: `http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=c691cfbf611a02788a2576d8d581c1c7&units=imperial`,
+    //         dataType: "json",
+    //     }).then(function(data) {
+    //         console.log(data);
+    //         $("#5day").empty();
+    //         var uv = $("<p>").addClass("card-text").text(`UV Index: + ${data.value}`);
+
+    //         $("#5day").append("");
+
+    //     });
 
     // }
 
