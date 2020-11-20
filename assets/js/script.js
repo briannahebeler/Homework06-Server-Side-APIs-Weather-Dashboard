@@ -75,25 +75,46 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=613b70a86934e746511d06fb5fb23217&units=imperial`,
             dataType: "json",
         }).then(function(data) {
-
+            console.log(data);
             $("#5DayTitle").empty();
-            var fiveDay = `<h3>5 Day Forecast</h3>`
+            $("#5day").empty();
+            
+            var fiveDay = `<h3 style="text-align: center; margin-top: 10px;">5 Day Forecast</h3>`
             $("#5DayTitle").append(fiveDay);
 
-            for (var i = 3; i < data.list.length; i=i+8) {
-                var forecastDate = data.list[i].dt_txt;
-                var title = $("<h3>").addClass("card-title").text(forecastDate.split(" ")[0]);
+            for (var i = 7; i < data.list.length; i=i+8) {
+                var title = $("<h6>").addClass("card-title").text("adding moment, testing");
+                // var forecastDate = data.list[i].dt_txt;
+                // var title = $("<h3>").addClass("card-title").text(forecastDate.split(" ")[0]);
                 var iconURL = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
                 var icon = $("<img>").attr("src", iconURL);
-                var card = $("<div>").addClass("card");
+                var card = $("<div>").addClass("card test");
+                var col = $("<div>").addClass("col");
                 var temp = $("<p>").addClass("card-text").text("Temp: " + data.list[i].main.temp + " °F");
                 var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity} %`);
                 var cardBody = $("<div>").addClass("card-body");
 
+                if (i === 7) {
+                    var title = $("<h3>").addClass("card-title").text("1");
+                }
+                else if (i === 15) {
+                    var title = $("<h3>").addClass("card-title").text("2");
+                }
+                else if (i === 23) {
+                    var title = $("<h3>").addClass("card-title").text("3");
+                }
+                else if (i === 31) {
+                    var title = $("<h3>").addClass("card-title").text("4");
+                }
+                else if (i === 39) {
+                    var title = $("<h3>").addClass("card-title").text("5");
+                }
+
+                title.append(icon);
                 cardBody.append(title, temp, humid);
                 card.append(cardBody);
-                title.append(icon);
-                $("#5day").append(card);
+                col.append(card);
+                $("#5day").append(col);
             }
         });
 
