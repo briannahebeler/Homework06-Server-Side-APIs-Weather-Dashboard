@@ -6,8 +6,6 @@ $(document).ready(function () {
         $("search-value").val("");
 
         searchWeather(searchValue);
-        searchUV();
-        search5Day(searchValue);
     })
 
 
@@ -77,22 +75,23 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=613b70a86934e746511d06fb5fb23217&units=imperial`,
             dataType: "json",
         }).then(function(data) {
-            console.log(data);
 
             $("#5day").empty();
+            var fiveDay = `<h3>5 Day Forecast</h3>`
 
-            var col = `
-            <div class="col-sm-2 card" id="day1">
-            </div>
-            <div class="col-sm-2 card" id="day2">
-            </div>
-            <div class="col-sm-2 card" id="day3">
-            </div>
-            <div class="col-sm-2 card" id="day4">
-            </div>
-            <div class="col-sm-2 card" id="day5">
-            </div>
-            `;
+            //creating a card for appending weather data
+            var title = $("<h3>").addClass("card-title").text(moment().add(1, 'days').format('L'));
+            var iconURL = "http://openweathermap.org/img/w/" + data.list[3].weather[0].icon + ".png";
+            var icon = $("<img>").attr("src", iconURL);
+            var card = $("<div>").addClass("col-sm-2 card").attr("id", "day1");
+            var temp = $("<p>").addClass("card-text").text("Temp: " + data.list[3].main.temp);
+            var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[3].main.humidity}`);
+            var cardBody = $("<div>").addClass("card-body");
+
+            cardBody.append(title, temp, humid);
+            card.append(cardBody);
+            title.append(icon);
+            $("#5day").append(fiveDay, card);
 
             $("#5day").append(col);
 
