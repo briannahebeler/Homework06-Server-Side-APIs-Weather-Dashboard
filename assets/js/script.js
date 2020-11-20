@@ -75,36 +75,32 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=613b70a86934e746511d06fb5fb23217&units=imperial`,
             dataType: "json",
         }).then(function(data) {
-
+            
             $("#5day").empty();
             var fiveDay = `<h3>5 Day Forecast</h3>`
+            $("#5day").append(fiveDay);
 
-            //creating a card for appending weather data
-            var title = $("<h3>").addClass("card-title").text(moment().add(1, 'days').format('L'));
-            var iconURL = "http://openweathermap.org/img/w/" + data.list[3].weather[0].icon + ".png";
-            var icon = $("<img>").attr("src", iconURL);
-            var card = $("<div>").addClass("col-sm-2 card").attr("id", "day1");
-            var temp = $("<p>").addClass("card-text").text("Temp: " + data.list[3].main.temp);
-            var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[3].main.humidity}`);
-            var cardBody = $("<div>").addClass("card-body");
+            for (var i = 3; i < data.list.length; i=i+8) {
+                var forecastDate = data.list[i].dt_txt;
+                var title = $("<h3>").addClass("card-title").text(forecastDate.split(" ")[0]);
+                var iconURL = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
+                var icon = $("<img>").attr("src", iconURL);
+                // var card = $("<div>").addClass("col-sm-2 card").attr("id", "day1");
+                var card = $("<div>").addClass("card");
+                var temp = $("<p>").addClass("card-text").text("Temp: " + data.list[i].main.temp);
+                var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity}`);
+                var cardBody = $("<div>").addClass("card-body");
 
-            cardBody.append(title, temp, humid);
-            card.append(cardBody);
-            title.append(icon);
-            $("#5day").append(fiveDay, card);
-
-            $("#5day").append(col);
-
+                cardBody.append(title, temp, humid);
+                card.append(cardBody);
+                title.append(icon);
+                $("#5day").append(card);
+            }
         });
 
     }
 
-    //function to get forecast- diff url
-
     //use a for loop to loop over all forcasts (by specs)
-
-    // function to get uv index (this is another dif url call)
-    //this uv index even though diff call. append to same sepcs from search body card
 
 
     //get current search history, if there is any 
