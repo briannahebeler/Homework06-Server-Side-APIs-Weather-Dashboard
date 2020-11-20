@@ -75,7 +75,7 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=613b70a86934e746511d06fb5fb23217&units=imperial`,
             dataType: "json",
         }).then(function(data) {
-            
+
             $("#5day").empty();
             var fiveDay = `<h3>5 Day Forecast</h3>`
             $("#5day").append(fiveDay);
@@ -87,8 +87,8 @@ $(document).ready(function () {
                 var icon = $("<img>").attr("src", iconURL);
                 // var card = $("<div>").addClass("col-sm-2 card").attr("id", "day1");
                 var card = $("<div>").addClass("card");
-                var temp = $("<p>").addClass("card-text").text("Temp: " + data.list[i].main.temp);
-                var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity}`);
+                var temp = $("<p>").addClass("card-text").text("Temp: " + data.list[i].main.temp + " °F");
+                var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity} %`);
                 var cardBody = $("<div>").addClass("card-body");
 
                 cardBody.append(title, temp, humid);
