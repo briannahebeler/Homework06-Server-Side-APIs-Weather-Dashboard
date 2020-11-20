@@ -6,8 +6,8 @@ $(document).ready(function () {
         $("search-value").val("");
 
         searchWeather(searchValue);
-        searchUV(searchValue);
-        // search5Day(searchValue);
+        searchUV();
+        search5Day(searchValue);
     })
 
 
@@ -41,7 +41,7 @@ $(document).ready(function () {
             searchUV(data.coord.lat, data.coord.lon);
             // console.log(data.coord.lat + " " + data.coord.lon);
 
-            // search5Day(searchValue);
+            search5Day(searchValue);
 
 
 
@@ -58,7 +58,6 @@ $(document).ready(function () {
             
             if (data.value < 3) {
                 uv.addClass("uvFavorable");
-                // console.log(uv);
             }
             else if (data.value <= 5) {
                 uv.addClass("uvModerate");
@@ -72,21 +71,34 @@ $(document).ready(function () {
         });
     }
 
-    // function search5Day() {
-    //     $.ajax({
-    //         type: "GET",
-    //         url: `http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=c691cfbf611a02788a2576d8d581c1c7&units=imperial`,
-    //         dataType: "json",
-    //     }).then(function(data) {
-    //         console.log(data);
-    //         $("#5day").empty();
-    //         var uv = $("<p>").addClass("card-text").text(`UV Index: + ${data.value}`);
+    function search5Day(searchValue) {
+        $.ajax({
+            type: "GET",
+            url: `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=613b70a86934e746511d06fb5fb23217&units=imperial`,
+            dataType: "json",
+        }).then(function(data) {
+            console.log(data);
 
-    //         $("#5day").append("");
+            $("#5day").empty();
 
-    //     });
+            var col = `
+            <div class="col-sm-2 card" id="day1">
+            </div>
+            <div class="col-sm-2 card" id="day2">
+            </div>
+            <div class="col-sm-2 card" id="day3">
+            </div>
+            <div class="col-sm-2 card" id="day4">
+            </div>
+            <div class="col-sm-2 card" id="day5">
+            </div>
+            `;
 
-    // }
+            $("#5day").append(col);
+
+        });
+
+    }
 
     //function to get forecast- diff url
 
