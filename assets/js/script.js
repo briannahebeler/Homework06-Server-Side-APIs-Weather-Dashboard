@@ -26,9 +26,9 @@ $(document).ready(function () {
             var iconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
             var icon = $("<img>").attr("src", iconURL);
             var card = $("<div>").addClass("card");
-            var temp = $("<p>").addClass("card-text").text("Temp: " + data.main.temp);
-            var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed);
-            var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}`);
+            var temp = $("<p>").addClass("card-text").text("Temp: " + data.main.temp + " °F");
+            var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
+            var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity} %`);
             var cardBody = $("<div>").addClass("card-body").attr("id", "searchWeather");
 
             cardBody.append(title, temp, humid, wind);
@@ -76,16 +76,15 @@ $(document).ready(function () {
             dataType: "json",
         }).then(function(data) {
 
-            $("#5day").empty();
+            $("#5DayTitle").empty();
             var fiveDay = `<h3>5 Day Forecast</h3>`
-            $("#5day").append(fiveDay);
+            $("#5DayTitle").append(fiveDay);
 
             for (var i = 3; i < data.list.length; i=i+8) {
                 var forecastDate = data.list[i].dt_txt;
                 var title = $("<h3>").addClass("card-title").text(forecastDate.split(" ")[0]);
                 var iconURL = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
                 var icon = $("<img>").attr("src", iconURL);
-                // var card = $("<div>").addClass("col-sm-2 card").attr("id", "day1");
                 var card = $("<div>").addClass("card");
                 var temp = $("<p>").addClass("card-text").text("Temp: " + data.list[i].main.temp + " °F");
                 var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity} %`);
@@ -99,8 +98,6 @@ $(document).ready(function () {
         });
 
     }
-
-    //use a for loop to loop over all forcasts (by specs)
 
 
     //get current search history, if there is any 
