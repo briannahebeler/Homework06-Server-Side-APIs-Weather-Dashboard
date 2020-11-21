@@ -12,7 +12,7 @@ The UV index is color coded to depict the UV conditions. If the UV is green the 
 The 5 day projected forecast section displays the date, an icon representing the future weather condition, the future temperature, and the future humidity percentage.
 
 ### Local Storage
-Using the users local storage, the sessions city search history will be displayed on the side left side of the dashboard. The user can click on any of their previous city searches and the weather data will display on the dashboard. When the user reopens their application, they will have the last searched city's forecast loaded onto their dashboard. 
+Using the users local storage, the current sessions city search history will be displayed on the left side of the dashboard. The user can click on any of their previous city searches and the weather data will display on the dashboard. When the user reopens their application, they will have the city they last searched loaded onto their dashboard. 
 
 
 ## Screenshot
