@@ -2,13 +2,27 @@ $(document).ready(function () {
 
     $("#search-button").on("click", function () {
         var searchValue = $("#search-value").val();
-
         $("search-value").val("");
-
         searchWeather(searchValue);
     })
 
+    var searchHistory = [];
 
+    function saveSearch(searchedCity) {
+        searchHistory.push(searchedCity);
+
+        localStorage.setItem("savedSearch", searchHistory);
+
+        var cityName = $("<h6>").addClass("card-body").text(searchedCity);
+        var card = $("<div>").addClass("card");
+        card.append(cityName);
+
+        $("#searchHistory").append(card);
+
+        cityName.on("click", function() {
+            searchWeather(this.innerHTML);
+        })
+    }
 
     function searchWeather(searchValue) {
         $.ajax({
@@ -16,8 +30,7 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=c691cfbf611a02788a2576d8d581c1c7&units=imperial`,
             dataType: "json",
         }).then(function(data) {
-            //create history link for the search (Look up .push())
-            //this is used to set items to local storage- is done in function of first call
+
             saveSearch(searchValue);
 
             $("#today").empty();
@@ -39,14 +52,8 @@ $(document).ready(function () {
             $("#today").append(card);
 
             searchUV(data.coord.lat, data.coord.lon);
-            // console.log(data.coord.lat + " " + data.coord.lon);
-
             search5Day(searchValue);
         });
-    }
-
-    function saveSearch(searchValue) {
-        localStorage.setItem("savedSearch", searchValue);
     }
 
     function searchUV(lat, lon) {
@@ -123,7 +130,8 @@ $(document).ready(function () {
     }
 
     function displaySearchHistory() {
-        var searchHistory = localStorage.getItem("savedSearch");
+        var history = localStorage.getItem("savedSearch");
+        searchWeather(history);
     }
 
     displaySearchHistory();
