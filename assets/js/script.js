@@ -18,6 +18,7 @@ $(document).ready(function () {
         }).then(function(data) {
             //create history link for the search (Look up .push())
             //this is used to set items to local storage- is done in function of first call
+            saveSearch(searchValue);
 
             $("#today").empty();
 
@@ -41,10 +42,11 @@ $(document).ready(function () {
             // console.log(data.coord.lat + " " + data.coord.lon);
 
             search5Day(searchValue);
-
-
-
         });
+    }
+
+    function saveSearch(searchValue) {
+        localStorage.setItem("savedSearch", searchValue);
     }
 
     function searchUV(lat, lon) {
@@ -119,6 +121,12 @@ $(document).ready(function () {
         });
 
     }
+
+    function displaySearchHistory() {
+        var searchHistory = localStorage.getItem("savedSearch");
+    }
+
+    displaySearchHistory();
 
 
     //get current search history, if there is any 
