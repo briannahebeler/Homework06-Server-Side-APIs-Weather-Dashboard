@@ -4,6 +4,7 @@ $(document).ready(function () {
         var searchValue = $("#search-value").val();
         $("search-value").val("");
         searchWeather(searchValue);
+        // $("#search-value").reset;
     })
 
     var searchHistory = [];
@@ -89,7 +90,6 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=613b70a86934e746511d06fb5fb23217&units=imperial`,
             dataType: "json",
         }).then(function(data) {
-            console.log(data);
             $("#5DayTitle").empty();
             $("#5day").empty();
             
@@ -137,12 +137,5 @@ $(document).ready(function () {
     }
 
     displaySearchHistory();
-
-
-    //get current search history, if there is any 
-
-    //print out search history 
-    //hind- needs to clickable bc you are going to pass search value into it
-
 
 })
