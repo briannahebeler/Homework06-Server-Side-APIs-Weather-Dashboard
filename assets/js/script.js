@@ -11,7 +11,7 @@ $(document).ready(function () {
     function saveSearch(searchedCity) {
         searchHistory.push(searchedCity);
 
-        localStorage.setItem("savedSearch", searchHistory);
+        localStorage.setItem("savedSearch", searchedCity);
 
         var cityName = $("<h6>").addClass("card-body").text(searchedCity);
         var card = $("<div>").addClass("card");
