@@ -41,7 +41,7 @@ $(document).ready(function () {
             //creating a card for appending weather data
             var title = $("<h2>").addClass("card-title").text(data.name)
             var currentDate = $("<h5>").addClass("card-subtitle mb-2 text-muted").text(moment().format('L'));
-            var iconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+            var iconURL = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
             var icon = $("<img>").attr("src", iconURL);
             var card = $("<div>").addClass("card");
             var temp = $("<p>").addClass("card-text").text("Temp: " + data.main.temp + " °F");
@@ -97,7 +97,7 @@ $(document).ready(function () {
             $("#5DayTitle").append(fiveDay);
 
             for (var i = 7; i < data.list.length; i=i+8) {
-                var iconURL = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
+                var iconURL = "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
                 var icon = $("<img>").attr("src", iconURL);
                 var card = $("<div>").addClass("card bg-primary");
                 var col = $("<div>").addClass("col");
