@@ -9,19 +9,21 @@ $(document).ready(function () {
     var searchHistory = [];
 
     function saveSearch(searchedCity) {
-        searchHistory.push(searchedCity);
-
         localStorage.setItem("savedSearch", searchedCity);
+        // localStorage.setItem("sessionSearchHistory", searchHistory);
 
-        var cityName = $("<h6>").addClass("card-body").text(searchedCity);
-        var card = $("<div>").addClass("card");
-        card.append(cityName);
+        if(!searchHistory.includes(searchedCity)){
+            searchHistory.push(searchedCity);
+            var cityName = $("<h6>").addClass("card-body").text(searchedCity);
+            var card = $("<div>").addClass("card");
+            card.append(cityName);
 
-        $("#searchHistory").append(card);
+            $("#searchHistory").append(card);
 
-        cityName.on("click", function() {
-            searchWeather(this.innerHTML);
-        })
+            cityName.on("click", function() {
+                searchWeather(this.innerHTML);
+            })
+        }
     }
 
     function searchWeather(searchValue) {
