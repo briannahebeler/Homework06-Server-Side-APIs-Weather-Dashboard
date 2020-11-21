@@ -52,18 +52,20 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=436b282f4e8096812742aad81f633d29`,
             dataType: "json",
         }).then(function(data) {
-            var uv = $("<p>").addClass("card-text").text(`UV Index: ${data.value}`);
+            var uv = $("<p>").addClass("card-text").text(`UV Index: `);
+            var uvIndex = $("<span>").text(`${data.value}`);
             
             if (data.value < 3) {
-                uv.addClass("uvFavorable");
+                uvIndex.addClass("uvFavorable");
             }
             else if (data.value <= 5) {
-                uv.addClass("uvModerate");
+                uvIndex.addClass("uvModerate");
             }
             else {
-                uv.addClass("uvSevere");
+                uvIndex.addClass("uvSevere");
             }
 
+            uv.append(uvIndex);
             $("#searchWeather").append(uv);
 
         });
@@ -83,9 +85,6 @@ $(document).ready(function () {
             $("#5DayTitle").append(fiveDay);
 
             for (var i = 7; i < data.list.length; i=i+8) {
-                var title = $("<h6>").addClass("card-title").text("adding moment, testing");
-                // var forecastDate = data.list[i].dt_txt;
-                // var title = $("<h3>").addClass("card-title").text(forecastDate.split(" ")[0]);
                 var iconURL = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
                 var icon = $("<img>").attr("src", iconURL);
                 var card = $("<div>").addClass("card test");
@@ -95,19 +94,19 @@ $(document).ready(function () {
                 var cardBody = $("<div>").addClass("card-body");
 
                 if (i === 7) {
-                    var title = $("<h3>").addClass("card-title").text("1");
+                    var title = $("<h6>").addClass("card-title").text(moment().add(1, 'days').format('L'));
                 }
                 else if (i === 15) {
-                    var title = $("<h3>").addClass("card-title").text("2");
+                    var title = $("<h6>").addClass("card-title").text(moment().add(2, 'days').format('L'));
                 }
                 else if (i === 23) {
-                    var title = $("<h3>").addClass("card-title").text("3");
+                    var title = $("<h6>").addClass("card-title").text(moment().add(3, 'days').format('L'));
                 }
                 else if (i === 31) {
-                    var title = $("<h3>").addClass("card-title").text("4");
+                    var title = $("<h6>").addClass("card-title").text(moment().add(4, 'days').format('L'));
                 }
                 else if (i === 39) {
-                    var title = $("<h3>").addClass("card-title").text("5");
+                    var title = $("<h6>").addClass("card-title").text(moment().add(5, 'days').format('L'));
                 }
 
                 title.append(icon);
