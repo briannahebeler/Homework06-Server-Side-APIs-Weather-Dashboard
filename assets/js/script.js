@@ -46,7 +46,7 @@ $(document).ready(function () {
             var card = $("<div>").addClass("card");
             var temp = $("<p>").addClass("card-text").text("Temp: " + data.main.temp + " °F");
             var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
-            var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity} %`);
+            var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity}%`);
             var cardBody = $("<div>").addClass("card-body").attr("id", "searchWeather");
 
             cardBody.append(title, currentDate, temp, humid, wind);
@@ -102,7 +102,7 @@ $(document).ready(function () {
                 var card = $("<div>").addClass("card bg-primary");
                 var col = $("<div>").addClass("col");
                 var temp = $("<p>").addClass("card-text").text("Temp: " + data.list[i].main.temp + " °F");
-                var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity} %`);
+                var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity}%`);
                 var cardBody = $("<div>").addClass("card-body");
 
                 if (i === 7) {

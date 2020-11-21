@@ -24,17 +24,13 @@
 
 <div class="container-fluid">
     <div class="row" style="margin:10px;">
-        <div class="col-sm-3">
-            <h5 style="padding-top:10px;">Search for a city</h5>
-            <div class="row">
-                    <div class="form-inline form-group">
-                        <input type="text" class="form-control" id="search-value" placeholder="Search for a city"/> 
-                        <button class="btn btn-primary" id="search-button"><i class="fa fa-search"></i></button>
-                    </div>
+        <div class="card col-sm-3" id="searchCard">
+            <h5>Search For A City</h5>
+            <div class="form-inline form-group">
+                <input type="text" class="form-control" id="search-value" placeholder="Enter city name here..."/> 
+                <button class="btn btn-primary" id="search-button"><i class="fa fa-search"></i></button>
             </div>
-            <div class="row">
-                <div id="searchHistory">
-                </div>
+            <div id="searchHistory">
             </div>
         </div>
         <div class="col-sm-9" style="float:left;">
