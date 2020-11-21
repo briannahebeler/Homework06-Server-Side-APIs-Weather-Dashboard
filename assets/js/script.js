@@ -22,7 +22,8 @@ $(document).ready(function () {
             $("#today").empty();
 
             //creating a card for appending weather data
-            var title = $("<h3>").addClass("card-title").text(data.name + " (" + moment().format('L') + ")" + " ");
+            var title = $("<h2>").addClass("card-title").text(data.name)
+            var currentDate = $("<h5>").addClass("card-subtitle mb-2 text-muted").text(moment().format('L'));
             var iconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
             var icon = $("<img>").attr("src", iconURL);
             var card = $("<div>").addClass("card");
@@ -31,7 +32,7 @@ $(document).ready(function () {
             var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.main.humidity} %`);
             var cardBody = $("<div>").addClass("card-body").attr("id", "searchWeather");
 
-            cardBody.append(title, temp, humid, wind);
+            cardBody.append(title, currentDate, temp, humid, wind);
             card.append(cardBody);
             title.append(icon);
             $("#today").append(card);
@@ -87,7 +88,7 @@ $(document).ready(function () {
             for (var i = 7; i < data.list.length; i=i+8) {
                 var iconURL = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
                 var icon = $("<img>").attr("src", iconURL);
-                var card = $("<div>").addClass("card test");
+                var card = $("<div>").addClass("card bg-primary");
                 var col = $("<div>").addClass("col");
                 var temp = $("<p>").addClass("card-text").text("Temp: " + data.list[i].main.temp + " °F");
                 var humid = $("<p>").addClass("card-text").text(`Humidity: ${data.list[i].main.humidity} %`);
