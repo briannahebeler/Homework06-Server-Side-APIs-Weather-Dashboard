@@ -19,4 +19,4 @@ Using the users local storage, the current sessions city search history will be 
 ![](./assets/images/weatherDashboard.png)
 
 ## Link
-https://briannahebeler.github.io/Homework06-Server-Side-APIs-Weather-Dashboard/
+https://briannahebeler.github.io/Weather-Dashboard/
