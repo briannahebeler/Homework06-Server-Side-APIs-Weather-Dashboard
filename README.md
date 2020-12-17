@@ -30,4 +30,4 @@ If you have any additional questions about this application you can reach out to
 You can check out some of my other projects at briannahebeler (https://github.com/briannahebeler).
 
 ## Link
-https://briannahebeler.github.io/Homework06-Server-Side-APIs-Weather-Dashboard/
+https://briannahebeler.github.io/Weather-Dashboard/
