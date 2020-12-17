@@ -16,7 +16,7 @@ Using the users local storage, the current sessions city search history will be 
 
 
 ## Screenshot
-![](./assets/images/weatherDashboard.png)
+![](./public/assets/images/weatherDashboard.png)
 
 ## Link
 https://briannahebeler.github.io/Homework06-Server-Side-APIs-Weather-Dashboard/
