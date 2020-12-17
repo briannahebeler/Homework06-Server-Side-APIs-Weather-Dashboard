@@ -1,4 +1,5 @@
 # Weather Dashboard
+![MIT](https://img.shields.io/badge/license-MIT-blueviolet)
 
 ## Description
 
@@ -17,6 +18,16 @@ Using the users local storage, the current sessions city search history will be 
 
 ## Screenshot
 ![](./public/assets/images/weatherDashboard.png)
+
+## License
+This project is licensed under the MIT license.
+
+## Contributing
+To contribute to this project you can fork this GitHub repository.
+
+## Questions
+If you have any additional questions about this application you can reach out to me at briannahebeler@gmail.com.
+You can check out some of my other projects at briannahebeler (https://github.com/briannahebeler).
 
 ## Link
 https://briannahebeler.github.io/Homework06-Server-Side-APIs-Weather-Dashboard/
