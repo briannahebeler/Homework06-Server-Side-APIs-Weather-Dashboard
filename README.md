@@ -17,7 +17,7 @@ Using the users local storage, the current sessions city search history will be 
 
 
 ## Screenshot
-![](./public/assets/images/weatherDashboard.png)
+![](./assets/images/weatherDashboard.png)
 
 ## License
 This project is licensed under the MIT license.
